@@ -68,7 +68,9 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script>// cart script
+
+    <script>
+    // cart script
         const cart = JSON.parse(localStorage.getItem("cart"))
           ? JSON.parse(localStorage.getItem("cart"))
           : [];
@@ -79,36 +81,36 @@
           document.querySelector("#cart").innerHTML = "";
         
           let total = cart
-            .reduce((total, product) => {
-              return total + product.price * product.qty;
+            .reduce((total, gun) => {
+              return total + gun.price * gun.qty;
             }, 0)
             .toFixed(2);
         
-          cart.forEach((product, position) => {
+          cart.forEach((gun, position) => {
             document.querySelector("#cart").innerHTML += `
               <div class="card mb-3 w-100  position-relative" >
               <button type="button" class="position-absolute top-0 start-100 translate-middle badge btn btn-danger" onclick="removeFromCart(${position})">X</button>
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="${product.img}" class="img-fluid rounded-start" alt="...">
+                    <img src="${gun.img}" class="img-fluid rounded-start" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body d-flex flex-column container">
-                      <h5 class="card-title mb-3">${product.title}</h5>
+                      <h5 class="card-title mb-3">${gun.title}</h5>
                       <div class="d-flex mb-3 justify-content-between">
                         <p class="card-text">Individual price: </p>
-                        <span>R${product.price}<span>
+                        <span>R${gun.price}<span>
                       </div>
                       <div class="d-flex mb-3 justify-content-between">
                         <label class="form-label">Quantity:</label>
                         <input type="number" min=1 id="remove${position}" value=${
-              product.qty
+              gun.qty
             } onchange="updateCart(${position})" />
                       </div>
                       <div class="card-footer bg-white d-flex justify-content-between  p-0 pt-3">
                         <p>Total Cost: </p>
                         <span>R${(
-                          parseFloat(product.price) * parseInt(product.qty)
+                          parseFloat(gun.price) * parseInt(gun.qty)
                         ).toFixed(2)}</span>
                       </div>
                     </div>  
@@ -144,7 +146,7 @@
         // REMOVE
         function removeFromCart(position) {
           let confirmation = confirm(
-            "Are you sure you want to remove this product from the cart?"
+            "Are you sure you want to remove this gun from the cart?"
           );
         
           if (confirmation) {
@@ -157,8 +159,8 @@
         // CHECKOUT
         function checkout() {
           let total = cart
-            .reduce((total, product) => {
-              return total + product.price * product.qty;
+            .reduce((total, gun) => {
+              return total + gun.price * gun.qty;
             }, 0)
             .toFixed(2);
           try {

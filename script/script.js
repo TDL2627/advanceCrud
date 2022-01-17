@@ -1,12 +1,12 @@
 // content script
-let products = JSON.parse(localStorage.getItem("products"))
-  ? JSON.parse(localStorage.getItem("products"))
+let guns = JSON.parse(localStorage.getItem("guns"))
+  ? JSON.parse(localStorage.getItem("guns"))
   : [
       {
         title: "Desert Eagle",
         category: "Pistol",
         price: 7000,
-        img: "https://cdn11.bigcommerce.com/s-kp97pt369w/images/stencil/1280x1280/products/3558/10102/SVimg-DE50ASIMB__21050.1621622372.jpg?c=2",
+        img: "https://cdn11.bigcommerce.com/s-kp97pt369w/images/stencil/1280x1280/guns/3558/10102/SVimg-DE50ASIMB__21050.1621622372.jpg?c=2",
       },
       {
         title: "M16",
@@ -18,7 +18,7 @@ let products = JSON.parse(localStorage.getItem("products"))
         title: "M8879",
         category: "Shotgun",
         price: 10000,
-        img: "https://www.taiwangun.com/img/product_media/377001-378000/strzelby-asg-gazowe-strzelba-m8879-zasilana-green-gazem-black-golden-eagle-377376(3).JPG",
+        img: "https://www.taiwangun.com/img/gun_media/377001-378000/strzelby-asg-gazowe-strzelba-m8879-zasilana-green-gazem-black-golden-eagle-377376(3).JPG",
       },
       {
         title: "Glock",
@@ -56,16 +56,16 @@ let cart = JSON.parse(localStorage.getItem("cart"))
   ? JSON.parse(localStorage.getItem("cart"))
   : [];
 
-// READ
-function readProducts(products) {
-  document.querySelector("#products").innerHTML = "";
-  products.forEach((product, position) => {
-    document.querySelector("#products").innerHTML += `
+// Get
+function readGuns(guns) {
+  document.querySelector("#guns").innerHTML = "";
+  guns.forEach((gun, position) => {
+    document.querySelector("#guns").innerHTML += `
       <div class="card">
-        <img src="${product.img}" class="card-img-top" alt="${product.title}">
+        <img src="${gun.img}" class="card-img-top" alt="${gun.title}">
         <div class="card-body">
-          <h5 class="card-title">${product.title}</h5>
-          <p class="card-text">R${product.price}</p>
+          <h5 class="card-title">${gun.title}</h5>
+          <p class="card-text">R${gun.price}</p>
           <div class="d-flex mb-3">
             <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
             <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})"><i class="fas fa-cart-plus"></i></button>
@@ -75,10 +75,10 @@ function readProducts(products) {
           
           </div>
           <div class="d-flex justify-content-end card-footer">
-            <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#editProduct${position}" >
+            <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#editgun${position}" >
               Edit
             </button>
-            <button type="button" class="btn btn-danger w-50 ms-3" onclick="deleteProduct(${position})" >
+            <button type="button" class="btn btn-danger w-50 ms-3" onclick="deletegun(${position})" >
               Delete
             </button>
           </div>
@@ -91,7 +91,7 @@ function readProducts(products) {
 
       <div
                 class="modal fade"
-                id="editProduct${position}"
+                id="editgun${position}"
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
@@ -100,7 +100,7 @@ function readProducts(products) {
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Edit ${product.title}
+                        Edit ${gun.title}
                       </h5>
                       <button
                         type="button"
@@ -117,7 +117,7 @@ function readProducts(products) {
                           type="text"
                           name="editTitle${position}"
                           id="editTitle${position}"
-                          value="${product.title}"
+                          value="${gun.title}"
                         />
                       </div>
                       <div class="mb-3">
@@ -139,7 +139,7 @@ function readProducts(products) {
                           type="text"
                           name="editPrice${position}"
                           id="editPrice${position}"
-                          value="${product.price}"
+                          value="${gun.price}"
                         />
                       </div>
                       <div class="mb-3">
@@ -149,7 +149,7 @@ function readProducts(products) {
                           type="text"
                           name="editImg${position}"
                           id="editImg${position}"
-                          value="${product.img}"
+                          value="${gun.img}"
                         />
                       </div>
                     </div>
@@ -165,7 +165,7 @@ function readProducts(products) {
                         type="button"
                         class="btn btn-primary"
                         data-bs-dismiss="modal"
-                        onclick="updateProduct(${position})"
+                        onclick="updategun(${position})"
                       >
                         Save changes
                       </button>
@@ -177,11 +177,11 @@ function readProducts(products) {
   });
 }
 
-readProducts(products);
+readGuns(guns);
 showCartBadge();
 
 // CREATE
-function createProduct() {
+function creategun() {
   let title = document.querySelector("#addTitle").value;
   let category = document.querySelector("#addCategory").value;
   let price = document.querySelector("#addPrice").value;
@@ -189,21 +189,21 @@ function createProduct() {
 
   try {
     if (!title || !price || !img) throw new Error("Please fill in all fields");
-    products.push({
+    guns.push({
       title,
       category,
       price,
       img,
     });
-    localStorage.setItem("products", JSON.stringify(products));
-    readProducts(products);
+    localStorage.setItem("guns", JSON.stringify(guns));
+    readGuns(guns);
   } catch (err) {
     alert(err);
   }
 }
 
 // UPDATE
-function updateProduct(position) {
+function updategun(position) {
   let title = document.querySelector(`#editTitle${position}`).value;
   let category = document.querySelector(`#editCategory${position}`).value;
   let price = document.querySelector(`#editPrice${position}`).value;
@@ -211,29 +211,29 @@ function updateProduct(position) {
 
   try {
     if (!title || !price || !img) throw new Error("Please fill in all fields");
-    products[position] = {
+    guns[position] = {
       title,
       category,
       price,
       img,
     };
-    localStorage.setItem("products", JSON.stringify(products));
-    readProducts(products);
+    localStorage.setItem("guns", JSON.stringify(guns));
+    readGuns(guns);
   } catch (err) {
     alert(err);
   }
 }
 
 // DELETE
-function deleteProduct(position) {
+function deletegun(position) {
   let confirmation = confirm(
-    "Are you sure you want to delete the selected product?"
+    "Are you sure you want to delete the selected gun?"
   );
 
   if (confirmation) {
-    products.splice(position, 1);
-    localStorage.setItem("products", JSON.stringify(products));
-    readProducts(products);
+    guns.splice(position, 1);
+    localStorage.setItem("guns", JSON.stringify(guns));
+    readGuns(guns);
   }
 }
 
@@ -241,19 +241,19 @@ function deleteProduct(position) {
 function addToCart(position) {
   let qty = document.querySelector(`#addToCart${position}`).value;
   let added = false;
-  cart.forEach((product) => {
-    if (product.title == products[position].title) {
+  cart.forEach((gun) => {
+    if (gun.title == guns[position].title) {
       alert(
-        `You have successfully added ${qty} ${products[position].title} to the cart`
+        `You have successfully added ${qty} ${guns[position].title} to the cart`
       );
-      product.qty = parseInt(product.qty) + parseInt(qty);
+      gun.qty = parseInt(gun.qty) + parseInt(qty);
       added = true;
     }
   });
   if (!added) {
-    cart.push({ ...products[position], qty });
+    cart.push({ ...guns[position], qty });
     alert(
-      `You have successfully added ${qty} ${products[position].title} to the cart`
+      `You have successfully added ${qty} ${guns[position].title} to the cart`
     );
   }
 
@@ -272,15 +272,15 @@ function sortCategory() {
   let category = document.querySelector("#sortCategory").value;
 
   if (category == "All") {
-    return readProducts(products);
+    return readGuns(guns);
   }
 
-  let foundProducts = products.filter((product) => {
-    return product.category == category;
+  let foundguns = guns.filter((gun) => {
+    return gun.category == category;
   });
 
-  readProducts(foundProducts);
-  console.log(foundProducts);
+  readGuns(foundguns);
+  console.log(foundguns);
 }
 
 // SORT BY NAME
@@ -288,7 +288,7 @@ function sortCategory() {
 function sortName() {
   let direction = document.querySelector("#sortName").value;
 
-  let sortedProducts = products.sort((a, b) => {
+  let sortedguns = guns.sort((a, b) => {
     if (a.title.toLowerCase() < b.title.toLowerCase()) {
       return -1;
     }
@@ -297,9 +297,9 @@ function sortName() {
     }
     return 0;
   });
-  if (direction == "descending") sortedProducts.reverse();
-  console.log(sortedProducts);
-  readProducts(products);
+  if (direction == "descending") sortedguns.reverse();
+  console.log(sortedguns);
+  readGuns(guns);
 }
 
 // SORT BY PRICE
@@ -307,12 +307,12 @@ function sortName() {
 function sortPrice() {
   let direction = document.querySelector("#sortPrice").value;
 
-  let sortedProducts = products.sort((a, b) => a.price - b.price);
+  let sortedguns = guns.sort((a, b) => a.price - b.price);
 
-  console.log(sortedProducts);
+  console.log(sortedguns);
 
-  if (direction == "descending") sortedProducts.reverse();
-  readProducts(sortedProducts);
+  if (direction == "descending") sortedguns.reverse();
+  readGuns(sortedguns);
 }
 
 
