@@ -64,5 +64,14 @@ footer{
     background-color: white;
 }
 .carting{
-    
+    color: white;
+    background-color: green;
+}
+.carting:hover{
+    color: green;
+    background-color: white;
+}
+.small-num{
+    color: white;
+background-color: black;
 }
