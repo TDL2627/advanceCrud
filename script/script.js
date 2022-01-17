@@ -6,7 +6,7 @@ let products = JSON.parse(localStorage.getItem("products"))
         title: "Desert Eagle",
         category: "Pistol",
         price: 7000,
-        img: "https://upload.wikimedia.org/wikipedia/commons/5/58/Deagle44.jpg",
+        img: "https://cdn11.bigcommerce.com/s-kp97pt369w/images/stencil/1280x1280/products/3558/10102/SVimg-DE50ASIMB__21050.1621622372.jpg?c=2",
       },
       {
         title: "M16",
@@ -42,7 +42,7 @@ let products = JSON.parse(localStorage.getItem("products"))
         title: "Sawed-off Shotgun",
         category: "Shotgun",
         price: 5000,
-        img: "https://upload.wikimedia.org/wikipedia/commons/3/30/Lupara.jpg",
+        img: "https://www.gannett-cdn.com/-mm-/86102464e67817ea13e7e8c29f0f5046cbd894ac/c=0-0-2618-1479/local/-/media/2015/02/24/Phoenix/Phoenix/635603710886371290-87532087.jpg",
       },
       {
         title: "357",
