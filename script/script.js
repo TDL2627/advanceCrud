@@ -6,7 +6,7 @@ let guns = JSON.parse(localStorage.getItem("guns"))
         title: "Desert Eagle",
         category: "Pistol",
         price: 7000,
-        img: "https://cdn11.bigcommerce.com/s-kp97pt369w/images/stencil/1280x1280/guns/3558/10102/SVimg-DE50ASIMB__21050.1621622372.jpg?c=2",
+        img: "https://cdn11.bigcommerce.com/s-kp97pt369w/images/stencil/1280x1280/products/3558/10102/SVimg-DE50ASIMB__21050.1621622372.jpg?c=2",
       },
       {
         title: "M16",
@@ -18,7 +18,7 @@ let guns = JSON.parse(localStorage.getItem("guns"))
         title: "M8879",
         category: "Shotgun",
         price: 10000,
-        img: "https://www.taiwangun.com/img/gun_media/377001-378000/strzelby-asg-gazowe-strzelba-m8879-zasilana-green-gazem-black-golden-eagle-377376(3).JPG",
+        img: "https://www.taiwangun.com/img/product_media/377001-378000/strzelby-asg-gazowe-strzelba-m8879-zasilana-green-gazem-black-golden-eagle-377376(3).JPG",
       },
       {
         title: "Glock",
