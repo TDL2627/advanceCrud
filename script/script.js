@@ -3,41 +3,53 @@ let products = JSON.parse(localStorage.getItem("products"))
   ? JSON.parse(localStorage.getItem("products"))
   : [
       {
-        title: "bananas",
-        category: "Fruit",
-        price: 9.99,
-        img: "https://i.postimg.cc/FHrjH935/banana.jpg",
+        title: "Desert Eagle",
+        category: "Pistol",
+        price: 7000,
+        img: "https://upload.wikimedia.org/wikipedia/commons/5/58/Deagle44.jpg",
       },
       {
-        title: "apples",
-        category: "Fruit",
-        price: 9.99,
-        img: "https://i.postimg.cc/W4Kr8gKT/apple.jpg",
+        title: "M16",
+        category: "Assualt Rifle",
+        price: 1299.99,
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/M16A2_noBG.jpg/1200px-M16A2_noBG.jpg",
       },
       {
-        title: "peaches",
-        category: "Fruit",
-        price: 9.99,
-        img: "https://i.postimg.cc/Vv9CzTNk/peach.jpg",
+        title: "M8879",
+        category: "Shotgun",
+        price: 10000,
+        img: "https://www.taiwangun.com/img/product_media/377001-378000/strzelby-asg-gazowe-strzelba-m8879-zasilana-green-gazem-black-golden-eagle-377376(3).JPG",
       },
       {
-        title: "grapes",
-        category: "Fruit",
-        price: 9.99,
-        img: "https://i.postimg.cc/SKw2Cq2K/grapes.jpg",
+        title: "Glock",
+        category: "Pistol",
+        price: 5000,
+        img: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Glock_17-removebg-preview.png",
       },
       {
-        title: "kiwi",
-        category: "Fruit",
-        price: 9.99,
-        img: "https://i.postimg.cc/43TbRzPP/Kiwi-Fruit.jpg",
+        title: "AK-47",
+        category: "Assualt Rifle",
+        price: 9000,
+        img: "https://cdn.britannica.com/70/123170-050-D7AAF458/AK-47.jpg",
       },
       {
-        title: "oranges",
-        category: "Fruit",
-        price: 9.99,
-        img: "https://i.postimg.cc/5NKQm8Dy/Oranges.jpg",
+        title: "M1 Garand",
+        category: "Assualt Rifle",
+        price: 3000,
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/M1_Garand_rifle_USA_noBg.jpg/1200px-M1_Garand_rifle_USA_noBg.jpg",
       },
+      {
+        title: "Sawed-off Shotgun",
+        category: "Shotgun",
+        price: 5000,
+        img: "https://upload.wikimedia.org/wikipedia/commons/3/30/Lupara.jpg",
+      },
+      {
+        title: "357",
+        category: "Pistol",
+        price: 11000,
+        img: "https://media.istockphoto.com/photos/handgun-357-magnum-and-bullets-picture-id152998352",
+      }
     ];
 
 let cart = JSON.parse(localStorage.getItem("cart"))
