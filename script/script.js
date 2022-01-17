@@ -11,7 +11,7 @@ let guns = JSON.parse(localStorage.getItem("guns"))
       {
         title: "M16",
         category: "Assualt Rifle",
-        price: 1299.99,
+        price: 12999.99,
         img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/M16A2_noBG.jpg/1200px-M16A2_noBG.jpg",
       },
       {
@@ -68,27 +68,18 @@ function readGuns(guns) {
           <p class="card-text">R${gun.price}</p>
           <div class="d-flex mb-3">
             <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
-            <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})"><i class="fas fa-cart-plus"></i></button>
-          </div>
-          
-          
-          
+            <button type="button" class="cart-icon btn btn-secondary ms-3" onclick="addToCart(${position})"><i class="fas fa-shopping-cart"></i></button>
+          </div> 
           </div>
           <div class="d-flex justify-content-end card-footer">
             <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#editgun${position}" >
               Edit
             </button>
-            <button type="button" class="btn btn-danger w-50 ms-3" onclick="deletegun(${position})" >
-              Delete
+            <button type="button" class="btn deleting w-50 ms-3" onclick="deletegun(${position})" >
+            <i class="fas fa-trash"></i>
             </button>
           </div>
       </div>
-
-
-
-
-
-
       <div
                 class="modal fade"
                 id="editgun${position}"
@@ -316,3 +307,23 @@ function sortPrice() {
 }
 
 
+// search
+
+searchbar = () => {
+    var searchitem = document.getElementById('search').value.trim();
+    try {
+      if (!searchitem) {
+        throw new Error('Nothing was entered in the search bar');
+      }
+      // Filter all the canibus in the array with value typed into the input field
+      let gunFound = guns.filter(gun => gun.title.toLowerCase().includes(searchitem.toLowerCase()) || gun.category.toLowerCase().includes(searchitem.toLowerCase()) );
+  
+      if(gunFound.length === 0) {
+        throw new Error('No guns were found');
+      }
+      guns = gunFound;
+      readGuns();
+    } catch (err) {
+      alert(err.message);
+    }
+  };
