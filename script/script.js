@@ -49,6 +49,12 @@ let guns = JSON.parse(localStorage.getItem("guns"))
         category: "Pistol",
         price: 11000,
         img: "https://media.istockphoto.com/photos/handgun-357-magnum-and-bullets-picture-id152998352",
+      },
+      {
+        title: "38. special",
+        category: "Pistol",
+        price: 4000,
+        img: "https://www.lt5fd.com/wp-content/uploads/2021/03/5685214_5604.jpg",
       }
     ];
 
